@@ -10,12 +10,12 @@ exports.index = function(req, res){
         loggedin = false;
         console.log("false");
     }
-    res.render('index', { title: 'Crappy Twitter', twits: twitdocs, loggedin: loggedin });
+    res.render('index', { title: 'Crappy Twitter', twits: twitdocs.reverse(), loggedin: loggedin });
   });
   };
 
 exports.get_twits = function(req, res) {
     Twit.find({}).populate("user").exec(function(err, twitdocs) {
-        res.render('_twits',{title:'Crappy Twitter',twits:twitdocs});
+        res.render('_twits',{twits:twitdocs.reverse()});
     });
 }
