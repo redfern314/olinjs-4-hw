@@ -1,0 +1,25 @@
+extends layout
+
+block style
+  link(rel='stylesheet', href='/stylesheets/index.css')
+  script(src='/javascripts/index.js')
+
+block content
+    h1= title
+    if loggedin==true 
+        div.container.compose
+            form(method='post',action='', id="composeform")
+                div#twitform
+                    div.inline#composetext
+                        h3.nomargin Compose a Twit
+                    div.inline#composeinput
+                        textarea(rows='1',name='twit',id='twitinput')
+                div#sendtwit
+                    button
+                        | Send twit
+
+    div#feed
+        div.container#feedheader
+            h2.nomargin.textcenter Look at all these twits!
+        div.container#feedbody
+            include _twits
